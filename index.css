@@ -1,13 +1,44 @@
 h1{
     color:yellowgreen;
+    text-align: center;
 }
 
-a.QR_scan
-{
-    position:absolute;
+a.QR_scan {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
 }
 
-.hide
-{
-    display:none;
+.left{
+    display: inline-table;
+    width: 100%;
+}
+.generales_active, .perso, .supprimees{
+    width: 33%;
+    text-align: center;
+}
+.deconnexion{
+    right: 0px;
+    top: 0px;
+    position: absolute;
+}
+.card-title, .description{
+    text-align: center;
+}
+.reduc{
+    right: 5px;
+    top: 5px;
+    position: absolute;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.supp{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
 }
