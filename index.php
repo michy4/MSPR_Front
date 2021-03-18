@@ -15,7 +15,9 @@
 <div id="demo">
 
     <h1>Promotions</h1>
-    <button href="login.php" class="deconnexion waves-effect waves-light btn">Déconnexion</button>
+    <a href="login.php">
+        <button class="deconnexion waves-effect waves-light btn">Déconnexion</button>
+    </a>
     <!-- Menu de navigation du site -->
     <nav>
         <div class="nav-wrapper">
