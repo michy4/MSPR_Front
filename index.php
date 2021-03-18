@@ -28,40 +28,40 @@
 
   <!-- Contenu principal -->
   <template class="generales" v-if="viewGeneral">
-    <div class="row">
+    <div class="row promotion">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title"><p>Chaussures Homme</p><p class="red-text">-15%</p></span>
-              <p>Des chaussures pour toutes les occasions.</p>
-              <img src="bug.png">
-              <p class="red-text">Expire le: Date de fin de l'offre</p>
+              <p class="hide">Des chaussures pour toutes les occasions.</p>
+              <img src="bug.png" class="hide">
+              <p class="red-text hide">Expire le: Date de fin de l'offre</p>
             </div>
           </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row promotion">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title"><p>Bonnets</p><p class="red-text">-20%</p></span>
-              <p>Des bonnets en laine ou synthétiques, parfaits pour l'hiver.</p>
-              <img src="bug.png">
-              <p class="red-text">Expire le: Date de fin de l'offre</p>
+              <p class="hide">Des bonnets en laine ou synthétiques, parfaits pour l'hiver.</p>
+              <img class="hide" src="bug.png">
+              <p class="red-text hide">Expire le: Date de fin de l'offre</p>
             </div>
           </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row promotion">
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
               <span class="card-title"><p>Pantalons enfants</p><p class="red-text">-15%</p></span>
-              <p>Des pantalons pour les enfants de 2 à 10 ans.</p>
-              <img src="bug.png">
-              <p class="red-text">Expire le: Date de fin de l'offre</p>
+              <p class="hide">Des pantalons pour les enfants de 2 à 10 ans.</p>
+              <img class="hide" src="bug.png">
+              <p class="red-text hide">Expire le: Date de fin de l'offre</p>
             </div>
           </div>
         </div>
@@ -69,14 +69,14 @@
   </template>
 
   <template class="personelles" v-if="viewPersonnel">
-  <div class="row">
+  <div class="row promotion">
         <div class="col s12 m6">
           <div class="card blue darken-4">
             <div class="card-content white-text">
               <span class="card-title"><p>Tout</p><p class="red-text">-5%</p></span>
-              <p>Réduction sur tout produit ne portant pas déjà une autre réduction.</p>
-              <img src="bug.png">
-              <p class="red-text">Expire le: Date de fin de l'offre</p>
+              <p class="hide">Réduction sur tout produit ne portant pas déjà une autre réduction.</p>
+              <img class="hide" src="bug.png">
+              <p class="red-text hide">Expire le: Date de fin de l'offre</p>
             </div>
           </div>
         </div>
@@ -84,14 +84,14 @@
   </template>
 
   <template class="supprimes" v-if="viewSupprimes">
-  <div class="row">
+  <div class="row promotion">
         <div class="col s12 m6">
           <div class="card grey darken-1">
             <div class="card-content white-text">
               <span class="card-title"><p>Sacs à Dos</p><p class="red-text">-25%</p></span>
-              <p>Offre spéciale pour la rentrée des classes.</p>
-              <img src="bug.png">
-              <p class="red-text">Expire le: Date de fin de l'offre</p>
+              <p class="hide">Offre spéciale pour la rentrée des classes.</p>
+              <img class="hide" src="bug.png">
+              <p class="red-text hide">Expire le: Date de fin de l'offre</p>
             </div>
             <div class="card-action">
               <a href="#">Supprimer</a>

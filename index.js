@@ -33,6 +33,10 @@ const demo = new Vue({
        toggleConnexion: function()
        {
             this.viewConnexion=!this.viewConnexion;
+       },
+       activate: function()
+       {
+            $("p").hide();
        }
     }
 })

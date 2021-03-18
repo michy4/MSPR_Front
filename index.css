@@ -6,3 +6,8 @@ a.QR_scan
 {
     position:absolute;
 }
+
+.hide
+{
+    display:none;
+}
