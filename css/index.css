@@ -10,6 +10,10 @@ a.QR_scan {
     margin-bottom: 5px;
 }
 
+#qr-canvas{
+    width: 100%;
+}
+
 .left{
     display: inline-table;
     width: 100%;

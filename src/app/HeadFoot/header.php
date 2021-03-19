@@ -7,6 +7,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
     <link rel="stylesheet" href="../../../css/index.css">
 </head>
 
@@ -28,3 +29,7 @@
             </ul>
         </div>
     </nav>
+    <canvas hidden="" id="qr-canvas"></canvas>
+    <div id="qr-result" hidden="">
+        <b>Data:</b> <span id="outputData"></span>
+    </div>

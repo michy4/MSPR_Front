@@ -2,7 +2,10 @@
   "name": "api-rest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.php",
+  "scripts": {
+    "start": "nodemon src/app/JS/api.js"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -10,11 +13,11 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
-  },
-  "scripts": {
-    "start": "nodemon src/app/JS/api.js"
+    "@babel/core": "^7.13.10",
+    "nodemon": "^2.0.7",
+    "parcel-bundler": "^1.6.1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }
