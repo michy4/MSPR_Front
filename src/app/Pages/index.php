@@ -1,52 +1,34 @@
-<?php
-include("../HeadFoot/header.php");
-?>
+
+    <?php include("../HeadFoot/header.php"); ?>
     <!-- Contenu principal -->
             <ul class="collapsible popout">
-                <li>
+
+<?php
+    foreach ($response as $card)
+    {
+        if(( $card['nb_utilisations']>0 || substr($card['date_expiration'],0,10)>=date_default_timezone_set(date_default_timezone_get())
+        && is_null($card['utilisateur_id'])))
+        {
+        ?>
+        <li>
                     <div class="collapsible-header center-align">
                 <span class="card-title ">
-                    <p>Chaussures Homme</p>
-                    <p class="reduc red-text">-15%</p>
+                    <p><?php echo $card['nom'];?></p>
+                    <p class="reduc red-text">-<?php echo ($card['promotion'])*100; ?>%</p>
                 </span>
 
                     </div>
                     <div class="collapsible-body">
-                        <img class="image" src="../../../images/bug.png">
-                        <p class="description">Des chaussures pour toutes les occasions.</p>
-                        <p class="red-text">Expire le : Date de fin de l'offre</p>
+                        <img class="image" src="<?php //echo $card['image']; ?>">
+                        <p class="description"><?php echo $card['description']; ?></p>
+                        <p class="red-text">Expire le: <?php echo date("d-m-Y ", strtotime(substr($card['date_expiration'],0,10))); ?></p>
                     </div>
-                </li>
-                <br>
-                <li>
-                    <div class="collapsible-header center-align">
-                <span class="card-title ">
-                    <p>Bonnets</p>
-                    <p class="reduc red-text">-20%</p>
-                </span>
-
-                    </div>
-                    <div class="collapsible-body">
-                        <img class="image" src="../../../images/bug.png">
-                        <p class="description">Des bonnets en laine ou synthétiques, parfaits pour l'hiver.</p>
-                        <p class="red-text">Expire le : Date de fin de l'offre</p>
-                    </div>
-                </li>
-                <br>
-                <li>
-                    <div class="collapsible-header center-align">
-                <span class="card-title ">
-                    <p>Pantalons enfants</p>
-                    <p class="reduc red-text">-15%</p>
-                </span>
-
-                    </div>
-                    <div class="collapsible-body">
-                        <img class="image" src="../../../images/bug.png">
-                        <p class="description">Des pantalons pour les enfants de 2 à 10 ans.</p>
-                        <p class="red-text">Expire le : Date de fin de l'offre</p>
-                    </div>
-                </li>
+        </li>
+        <br>
+        <?php
+        }
+    }
+?>
             </ul>
 </div>
 <?php
