@@ -3,10 +3,15 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const port = 3000
-const { v4: uuidv4 } = require('uuid')
 
 app.use(express.json())
 app.use(cors())
+
+//Swagger
+const swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('../../../swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const { getPromotionsDB, findPromotionsDB, replacePromotionsDB, insertPromotionsDB, deletePromotionsDB,
     getUsersDB, findUsersDB, replaceUsersDB, insertUsersDB, deleteUsersDB } = require('./maria_db')
