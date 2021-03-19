@@ -3,21 +3,32 @@ include("../HeadFoot/header.php");
 ?>
 <div class="row">
     <ul class="collapsible popout">
+
+    <?php
+    foreach ($response as $card)
+    {
+        if($card['utilisateur_id']==$id)
+        {
+        ?>
         <li>
-            <div class="collapsible-header center-align">
+                    <div class="collapsible-header center-align">
                 <span class="card-title ">
-                    <p>Tout</p>
-                    <p class="reduc red-text">-5%</p>
+                    <p><?php echo $card['nom'];?></p>
+                    <p class="reduc red-text">-<?php echo ($card['promotion'])*100; ?>%</p>
                 </span>
 
-            </div>
-            <div class="collapsible-body">
-                <img class="image" src="../../../images/bug.png">
-                <p class="description">Réduction sur tout produit ne portant pas déjà une autre
-                    réduction.</p>
-                <p class="red-text">Expire le : Date de fin de l'offre</p>
-            </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <img class="image" src="<?php //echo $card['image']; ?>">
+                        <p class="description"><?php echo $card['description']; ?></p>
+                        <p class="red-text">Expire le: <?php echo date("d-m-Y ", strtotime(substr($card['date_expiration'],0,10))); ?></p>
+                    </div>
         </li>
+        <br>
+        <?php
+        }
+    }
+?>
     </ul>
 </div>
 </div>

@@ -10,7 +10,9 @@
     <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
     <link rel="stylesheet" href="../../../css/index.css">
 </head>
-
+<?php
+include("../Action/API_Call.php");
+?>
 <body>
 
 <div id="demo">
