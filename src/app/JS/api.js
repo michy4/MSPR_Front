@@ -14,7 +14,8 @@ const swaggerUi = require('swagger-ui-express'),
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const { getPromotionsDB, findPromotionsDB, replacePromotionsDB, insertPromotionsDB, deletePromotionsDB,
-    getUsersDB, findUsersDB, replaceUsersDB, insertUsersDB, deleteUsersDB } = require('./maria_db')
+    getUsersDB, findUsersDB, replaceUsersDB, insertUsersDB, deleteUsersDB,
+    getUsersPromotionsDB,findUsersPromotionsDB,replaceUsersPromotionsDB,insertUsersPromotionsDB,deleteUsersPromotionsDB} = require('./maria_db')
 
 app.listen(port, () => {
     console.log('Example app listening at http://localhost:3000/')
@@ -28,6 +29,11 @@ app.get('/users', (req, res) => {
     printLog(req)
     getUsersDB().then(v => res.send(v))
 })
+app.get('/UsersPromotions', (req, res) => {
+    printLog(req)
+    getUsersPromotionsDB().then(v => res.send(v))
+})
+
 
 app.get('/promotions/:id', (req, res) =>{
     printLog(req)
@@ -53,6 +59,20 @@ app.get('/users/:id', (req, res) =>{
             }
         })
 })
+app.get('/UsersPromotions/:utilisateur_id/:promotion_id', (req, res) =>{
+    printLog(req)
+    const utilisateur_id = req.params.utilisateur_id
+    const promotion_id = req.params.promotion_id
+    findUsersPromotionsDB(utilisateur_id,promotion_id)
+        .then(UsersPromotions => {
+            if (UsersPromotions) {
+                res.send(UsersPromotions)
+            } else {
+                res.status(404).end()
+            }
+        })
+})
+
 
 const putOrPatchPromotion = (req, res) => {
     const { id, ...body } = req.body
@@ -80,10 +100,26 @@ const putOrPatchUser = (req, res) => {
             }
         })
 }
+const putOrPatchUserPromotion = (req, res) => {
+    const { utilisateur_id, promotion_id, ...body } = req.body
+    const UserPromotionUtilisateur_id = req.params.utilisateur_id
+    const UserPromotionPromotion_id = req.params.promotion_id
+    findUsersPromotionsDB(UserPromotionUtilisateur_id, UserPromotionPromotion_id)
+        .then(userpromotion => {
+            if (userpromotion) {
+                const newUserPromotion = Object.assign({}, userpromotion, body)
+                replaceUsersPromotionsDB(UserPromotionUtilisateur_id, UserPromotionPromotion_id, newUserPromotion).then(() => res.send(newUserPromotion))
+            } else {
+                res.status(404).end()
+            }
+        })
+}
+
 
 app.put('/promotions/:id', putOrPatchPromotion)
-
 app.put('/users/:id', putOrPatchUser)
+app.put('/UsersPromotions/:utilisateur_id/:promotion_id', putOrPatchUserPromotion)
+
 
 app.post('/promotions', (req, res) => {
     printLog(req)
@@ -95,6 +131,12 @@ app.post('/users', (req, res) => {
     insertUsersDB(req.body)
         .then(user => res.status(201).send(user))
 })
+app.post('/UsersPromotions', (req, res) => {
+    printLog(req)
+    insertUsersPromotionsDB(req.body)
+        .then(user => res.status(201).send(user))
+})
+
 
 app.delete('/promotions/:id', (req, res) => {
     printLog(req)
@@ -106,10 +148,17 @@ app.delete('/users/:id', (req, res) => {
     deleteUsersDB(req.params.id)
         .then(() => res.status(204).end())
 })
+app.delete('/UsersPromotions/:utilisateur_id/:promotion_id', (req, res) => {
+    printLog(req)
+    deleteUsersDB(req.params.utilisateur_id,req.params.promotion_id)
+        .then(() => res.status(204).end())
+})
+
 
 app.patch('/promotions/:id', putOrPatchPromotion)
-
 app.patch('/users/:id', putOrPatchUser)
+app.patch('/UsersPromotions/:utilisateur_id/:promotion_id', putOrPatchUserPromotion)
+
 
 function printLog(req) {
     console.log("new Requete")
