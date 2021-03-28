@@ -19,6 +19,10 @@
     {
       "name": "Promotions",
       "description": "API for promotions in the system"
+    },
+    {
+      "name": "UsersPromotions",
+      "description": "API for link between users and promotions"
     }
   ],
   "schemes": [
@@ -292,6 +296,143 @@
           }
         }
       }
+    },
+    "/UsersPromotions": {
+      "get": {
+        "tags": [
+          "UsersPromotions"
+        ],
+        "summary": "Get all users-promotions in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UsersPromotions"
+        ],
+        "description": "Create link between users and promotions in system",
+        "parameters": [
+          {
+            "name": "users-promotions",
+            "in": "body",
+            "description": "Link between promotions and users that we want to create",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New link is created",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        }
+      }
+    },
+    "/UsersPromotions/{id_U}/{id_P}": {
+      "parameters": [
+        {
+          "name": "id_U",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        },
+        {
+          "name": "id_P",
+          "in": "path",
+          "required": true,
+          "description": "ID of promotion that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "UsersPromotions"
+        ],
+        "summary": "Get all users-promotions in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user-promotions with give ID",
+        "tags": [
+          "UsersPromotions"
+        ],
+        "parameters": [
+          {
+            "name": "users-promotions",
+            "in": "body",
+            "description": "users-promotions with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Users-Promotions is updated",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update users-promotions with give ID",
+        "tags": [
+          "UsersPromotions"
+        ],
+        "parameters": [
+          {
+            "name": "users-promotions",
+            "in": "body",
+            "description": "users-promotions with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "users-promotions is updated",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete users-promotions with given ID",
+        "tags": [
+          "UsersPromotions"
+        ],
+        "responses": {
+          "200": {
+            "description": "Users-Promotions is deleted",
+            "schema": {
+              "$ref": "#/definitions/UserPromotion"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -430,6 +571,24 @@
         },
         "utilisateur_id": {
           "type": "string"
+        }
+      }
+    },
+    "UserPromotion": {
+      "required": [
+        "utilisateur_id",
+        "promosation_id",
+        "nb_utilisation"
+      ],
+      "properties": {
+        "utilisateur_id": {
+          "type": "string"
+        },
+        "promosation_id": {
+          "type": "string"
+        },
+        "nb_utilisation": {
+          "type": "number"
         }
       }
     }
